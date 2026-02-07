@@ -75,10 +75,11 @@
                 <div id="join-room-input" style="display: none; margin-bottom: 15px;">
                     <input type="text" id="room-code" placeholder="Oda Kodu (örn: ABC123)" 
                         style="width: 100%; padding: 15px; font-size: 16px; border: 2px solid #d4af37; 
-                        background: rgba(20, 15, 10, 0.8); color: white; margin-bottom: 10px; text-transform: uppercase;">
+                        background: rgba(20, 15, 10, 0.8); color: white; margin-bottom: 15px; text-transform: uppercase;">
                     <button class="start-btn" onclick="joinMultiplayerRoom()" 
-                        style="width: 100%; padding: 15px; font-size: 16px;">
-                        Odaya Katıl
+                        style="width: 100%; padding: 15px; font-size: 18px; background: #d4af37; color: #1a1410; 
+                        border: 2px solid #d4af37; cursor: pointer; font-weight: bold;">
+                        🚪 Odaya Katıl
                     </button>
                 </div>
                 <button class="start-btn" onclick="showMultiplayerMenu()" 
@@ -298,8 +299,11 @@
         }
 
         function joinMultiplayerRoom() {
+            console.log('joinMultiplayerRoom çağrıldı!');
             const playerName = document.getElementById('player-name').value.trim();
             const roomCode = document.getElementById('room-code').value.trim().toUpperCase();
+            
+            console.log('İsim:', playerName, 'Oda:', roomCode);
             
             if (!playerName) {
                 alert('Lütfen isminizi girin');
@@ -310,6 +314,7 @@
                 return;
             }
             
+            console.log('multiplayerManager.joinRoom çağrılıyor...');
             multiplayerManager.joinRoom(roomCode, playerName);
         }
     </script>
