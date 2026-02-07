@@ -9,11 +9,17 @@ class MultiplayerManager {
     }
 
     connect() {
-        // Socket.io bağlantısı
-        this.socket = io();
+        // Socket.io bağlantısı - production ve localhost için
+        const socketUrl = window.location.origin;
+        this.socket = io(socketUrl, {
+            transports: ['websocket', 'polling'],
+            reconnection: true,
+            reconnectionDelay: 1000,
+            reconnectionAttempts: 5
+        });
         
         this.socket.on('connect', () => {
-            console.log('Sunucuya bağlandı');
+            console.log('Sunucuya bağlandı:', socketUrl);
             this.connected = true;
         });
 
@@ -67,7 +73,15 @@ class MultiplayerManager {
 
         // Hata
         this.socket.on('error', (message) => {
-            alert(message);
+            console.error('Socket error:', message);
+            alert('Hata: ' + message);
+        });
+
+        // Bağlantı hatası
+        this.socket.on('connect_error', (error) => {
+            console.error('Bağlantı hatası:', error);
+            alert('Sunucuya bağlanılamadı! Sayfa yenileniyor...');
+            setTimeout(() => window.location.reload(), 2000);
         });
     }
 
