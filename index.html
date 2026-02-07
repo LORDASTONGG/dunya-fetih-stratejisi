@@ -73,10 +73,13 @@
                     </button>
                 </div>
                 <div id="join-room-input" style="display: none; margin-bottom: 15px;">
-                    <input type="text" id="room-code" placeholder="Oda Kodu" 
+                    <input type="text" id="room-code" placeholder="Oda Kodu (örn: ABC123)" 
                         style="width: 100%; padding: 15px; font-size: 16px; border: 2px solid #d4af37; 
-                        background: rgba(20, 15, 10, 0.8); color: white; margin-bottom: 10px;">
-                    <button class="start-btn" onclick="joinMultiplayerRoom()">Katıl</button>
+                        background: rgba(20, 15, 10, 0.8); color: white; margin-bottom: 10px; text-transform: uppercase;">
+                    <button class="start-btn" onclick="joinMultiplayerRoom()" 
+                        style="width: 100%; padding: 15px; font-size: 16px;">
+                        Odaya Katıl
+                    </button>
                 </div>
                 <button class="start-btn" onclick="showMultiplayerMenu()" 
                     style="background: #666; margin-top: 10px;">Geri</button>
@@ -276,7 +279,13 @@
         }
 
         function showJoinRoom() {
-            document.getElementById('join-room-input').style.display = 'block';
+            const joinInput = document.getElementById('join-room-input');
+            joinInput.style.display = 'block';
+            console.log('Oda katılma formu gösteriliyor');
+            // Input'a focus
+            setTimeout(() => {
+                document.getElementById('room-code').focus();
+            }, 100);
         }
 
         function createMultiplayerRoom() {
