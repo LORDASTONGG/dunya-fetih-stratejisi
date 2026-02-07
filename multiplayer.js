@@ -40,7 +40,13 @@ class MultiplayerManager {
 
         // Oda güncellendi
         this.socket.on('roomUpdate', (room) => {
-            this.updateLobby(room);
+            console.log('Oda güncellendi:', room);
+            // Eğer lobby yoksa göster
+            if (!document.getElementById('multiplayer-lobby')) {
+                this.showLobby(room);
+            } else {
+                this.updateLobby(room);
+            }
         });
 
         // Oyun başladı
@@ -96,8 +102,15 @@ class MultiplayerManager {
 
     joinRoom(roomId, playerName) {
         console.log('Odaya katılınıyor:', roomId, playerName);
+        if (!this.connected) {
+            console.error('Socket bağlı değil!');
+            alert('Sunucuya bağlanılamadı! Sayfa yenileniyor...');
+            setTimeout(() => window.location.reload(), 1000);
+            return;
+        }
         this.playerName = playerName;
         this.roomId = roomId;
+        console.log('joinRoom emit ediliyor...');
         this.socket.emit('joinRoom', { roomId, playerName });
     }
 
@@ -135,9 +148,17 @@ class MultiplayerManager {
     }
 
     showLobby(room) {
+        console.log('Lobby gösteriliyor:', room);
+        
+        // Başlangıç ekranını gizle
+        const startScreen = document.getElementById('start-screen');
+        if (startScreen) {
+            startScreen.classList.add('hidden');
+        }
+        
         const lobbyHTML = `
             <div id="multiplayer-lobby" style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); 
-                background: rgba(20, 15, 10, 0.98); padding: 40px; border: 3px solid #d4af37; z-index: 10000; min-width: 500px;">
+                background: rgba(20, 15, 10, 0.98); padding: 40px; border: 3px solid #d4af37; z-index: 10000; min-width: 500px; max-width: 90%;">
                 <h2 style="color: #d4af37; margin-bottom: 20px; text-align: center;">Oda: ${this.roomId}</h2>
                 <p style="color: #fff; text-align: center; margin-bottom: 20px;">Bu kodu arkadaşlarınla paylaş!</p>
                 
@@ -145,9 +166,9 @@ class MultiplayerManager {
                     <!-- Oyuncular buraya eklenecek -->
                 </div>
                 
-                <div id="faction-selection" style="margin-bottom: 20px;">
+                <div id="faction-selection-lobby" style="margin-bottom: 20px;">
                     <h3 style="color: #d4af37; margin-bottom: 15px;">Faksiyonunu Seç:</h3>
-                    <div style="display: flex; gap: 10px; justify-content: center;">
+                    <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
                         <button onclick="multiplayerManager.selectFaction('MUSLIM')" 
                             style="padding: 15px 25px; background: #2d5016; color: white; border: 2px solid #d4af37; cursor: pointer; font-size: 16px;">
                             Müslümanlar
