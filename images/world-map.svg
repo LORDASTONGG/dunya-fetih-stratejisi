@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" style="background: linear-gradient(180deg, #3d3426 0%, #2c2416 100%)">
+  <!-- Okyanus arka planı -->
+  <defs>
+    <linearGradient id="oceanGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#3d3426;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2c2416;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="landGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#6b5d47;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#5a4a35;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <rect width="1920" height="1080" fill="url(#oceanGrad)"/>
+  
+  <!-- Kuzey Amerika -->
+  <path d="M 150 200 Q 200 150 280 180 L 350 220 Q 380 280 360 350 L 320 420 Q 280 450 240 430 L 180 380 Q 140 320 150 200 Z" 
+        fill="url(#landGrad)" stroke="#1a1410" stroke-width="3" opacity="0.8"/>
+  
+  <!-- Güney Amerika -->
+  <path d="M 280 520 L 320 480 Q 360 500 370 560 L 380 640 Q 360 720 320 760 L 280 740 Q 250 680 260 620 L 270 560 Z" 
+        fill="url(#landGrad)" stroke="#1a1410" stroke-width="3" opacity="0.8"/>
+  
+  <!-- Avrupa -->
+  <path d="M 880 250 L 960 220 Q 1020 240 1040 280 L 1050 320 Q 1030 360 980 380 L 920 370 Q 880 340 870 300 Z" 
+        fill="url(#landGrad)" stroke="#1a1410" stroke-width="3" opacity="0.8"/>
+  
+  <!-- Afrika -->
+  <path d="M 900 420 L 980 400 Q 1080 440 1120 520 L 1140 620 Q 1120 720 1060 780 L 980 800 Q 920 780 900 720 L 880 620 Q 890 520 900 420 Z" 
+        fill="url(#landGrad)" stroke="#1a1410" stroke-width="3" opacity="0.8"/>
+  
+  <!-- Asya -->
+  <path d="M 1200 180 Q 1300 150 1420 170 L 1580 220 Q 1680 280 1720 360 L 1700 440 Q 1640 480 1540 490 L 1420 480 Q 1320 440 1260 380 L 1200 300 Z" 
+        fill="url(#landGrad)" stroke="#1a1410" stroke-width="3" opacity="0.8"/>
+  
+  <!-- Orta Doğu -->
+  <path d="M 1100 360 L 1180 340 Q 1240 360 1260 400 L 1250 460 Q 1220 490 1170 480 L 1120 450 Q 1090 410 1100 360 Z" 
+        fill="url(#landGrad)" stroke="#1a1410" stroke-width="3" opacity="0.8"/>
+  
+  <!-- Hindistan -->
+  <path d="M 1340 480 L 1420 460 Q 1480 490 1500 550 L 1480 620 Q 1440 650 1390 640 L 1350 600 Q 1330 540 1340 480 Z" 
+        fill="url(#landGrad)" stroke="#1a1410" stroke-width="3" opacity="0.8"/>
+  
+  <!-- Avustralya -->
+  <path d="M 1520 740 L 1620 720 Q 1700 750 1740 810 L 1730 880 Q 1680 920 1600 920 L 1520 900 Q 1480 860 1490 800 Z" 
+        fill="url(#landGrad)" stroke="#1a1410" stroke-width="3" opacity="0.8"/>
+  
+  <!-- Rusya -->
+  <path d="M 1100 120 Q 1300 80 1500 100 L 1680 140 Q 1720 180 1700 240 L 1600 280 Q 1450 300 1300 280 L 1150 250 Q 1080 200 1100 120 Z" 
+        fill="url(#landGrad)" stroke="#1a1410" stroke-width="3" opacity="0.8"/>
+  
+  <!-- Dekoratif çizgiler (enlem/boylam) -->
+  <line x1="0" y1="270" x2="1920" y2="270" stroke="#5a4a35" stroke-width="1" opacity="0.3"/>
+  <line x1="0" y1="540" x2="1920" y2="540" stroke="#5a4a35" stroke-width="1" opacity="0.3"/>
+  <line x1="0" y1="810" x2="1920" y2="810" stroke="#5a4a35" stroke-width="1" opacity="0.3"/>
+  
+  <line x1="480" y1="0" x2="480" y2="1080" stroke="#5a4a35" stroke-width="1" opacity="0.3"/>
+  <line x1="960" y1="0" x2="960" y2="1080" stroke="#5a4a35" stroke-width="1" opacity="0.3"/>
+  <line x1="1440" y1="0" x2="1440" y2="1080" stroke="#5a4a35" stroke-width="1" opacity="0.3"/>
+</svg>

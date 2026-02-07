@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <linearGradient id="soldierGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#c9a961;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#8b6f47;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Gövde -->
+  <ellipse cx="50" cy="70" rx="15" ry="20" fill="url(#soldierGrad)"/>
+  
+  <!-- Baş -->
+  <circle cx="50" cy="35" r="12" fill="url(#soldierGrad)"/>
+  
+  <!-- Miğfer -->
+  <path d="M 38 30 Q 50 20 62 30 L 62 38 L 38 38 Z" fill="#5a4a35"/>
+  
+  <!-- Kılıç -->
+  <rect x="65" y="55" width="3" height="25" fill="#8b6f47" transform="rotate(45 66.5 67.5)"/>
+  <polygon points="66.5,45 68.5,45 67.5,55" fill="#c9a961" transform="rotate(45 67.5 50)"/>
+  
+  <!-- Kalkan -->
+  <ellipse cx="35" cy="65" rx="8" ry="12" fill="#5a4a35" opacity="0.8"/>
+  <line x1="35" y1="57" x2="35" y2="73" stroke="#c9a961" stroke-width="1.5"/>
+</svg>
