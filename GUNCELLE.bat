@@ -36,8 +36,8 @@ git commit -m "Multiplayer socket.io fix - production ready"
 echo [►] GitHub'a yükleniyor...
 git push -u origin master
 
+echo.
 if %ERRORLEVEL% EQU 0 (
-    echo.
     echo ════════════════════════════════════════════════════════
     echo.
     echo [✓] BAŞARILI! Güncelleme GitHub'a yüklendi!
@@ -48,6 +48,7 @@ if %ERRORLEVEL% EQU 0 (
     echo.
     echo ════════════════════════════════════════════════════════
 ) else (
+    echo ════════════════════════════════════════════════════════
     echo.
     echo [HATA] Yükleme başarısız!
     echo.
@@ -56,6 +57,7 @@ if %ERRORLEVEL% EQU 0 (
     echo - Remote ayarlanmamış
     echo - İnternet bağlantısı yok
     echo.
+    echo ════════════════════════════════════════════════════════
 )
 
 echo.

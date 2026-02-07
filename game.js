@@ -959,7 +959,7 @@ class Game {
             this.updateMapTransform();
         });
         
-        // Pan (sürükleme)
+        // Pan (sürükleme) - Mouse
         mapContainer.addEventListener('mousedown', (e) => {
             if (e.target.closest('.city')) return;
             this.isDragging = true;
@@ -978,6 +978,61 @@ class Game {
         document.addEventListener('mouseup', () => {
             this.isDragging = false;
             document.getElementById('map-container').style.cursor = 'grab';
+        });
+
+        // Touch Support (Mobil)
+        let touchStartX = 0;
+        let touchStartY = 0;
+        
+        mapContainer.addEventListener('touchstart', (e) => {
+            if (e.target.closest('.city')) return;
+            if (e.touches.length === 1) {
+                this.isDragging = true;
+                touchStartX = e.touches[0].clientX - this.panX;
+                touchStartY = e.touches[0].clientY - this.panY;
+            }
+        }, { passive: true });
+        
+        mapContainer.addEventListener('touchmove', (e) => {
+            if (!this.isDragging || e.touches.length !== 1) return;
+            this.panX = e.touches[0].clientX - touchStartX;
+            this.panY = e.touches[0].clientY - touchStartY;
+            this.updateMapTransform();
+        }, { passive: true });
+        
+        mapContainer.addEventListener('touchend', () => {
+            this.isDragging = false;
+        }, { passive: true });
+
+        // Pinch to Zoom (Mobil)
+        let initialDistance = 0;
+        let initialZoom = 1;
+        
+        mapContainer.addEventListener('touchstart', (e) => {
+            if (e.touches.length === 2) {
+                const touch1 = e.touches[0];
+                const touch2 = e.touches[1];
+                initialDistance = Math.hypot(
+                    touch2.clientX - touch1.clientX,
+                    touch2.clientY - touch1.clientY
+                );
+                initialZoom = this.zoom;
+            }
+        }, { passive: true });
+        
+        mapContainer.addEventListener('touchmove', (e) => {
+            if (e.touches.length === 2) {
+                e.preventDefault();
+                const touch1 = e.touches[0];
+                const touch2 = e.touches[1];
+                const currentDistance = Math.hypot(
+                    touch2.clientX - touch1.clientX,
+                    touch2.clientY - touch1.clientY
+                );
+                const scale = currentDistance / initialDistance;
+                this.zoom = Math.max(1, Math.min(3, initialZoom * scale));
+                this.updateMapTransform();
+            }
         });
     }
 

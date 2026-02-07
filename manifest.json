@@ -1,0 +1,20 @@
+{
+  "name": "Dünya Fetih Stratejisi",
+  "short_name": "Fetih",
+  "description": "Multiplayer strateji oyunu - Dünyayı fethet!",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#1a1410",
+  "theme_color": "#d4af37",
+  "orientation": "any",
+  "icons": [
+    {
+      "src": "images/world-map.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["games", "entertainment"],
+  "lang": "tr"
+}

@@ -6,11 +6,14 @@ class MultiplayerManager {
         this.playerName = null;
         this.isHost = false;
         this.connected = false;
+        console.log('MultiplayerManager oluşturuldu');
     }
 
     connect() {
         // Socket.io bağlantısı - production ve localhost için
         const socketUrl = window.location.origin;
+        console.log('Socket.io bağlanıyor:', socketUrl);
+        
         this.socket = io(socketUrl, {
             transports: ['websocket', 'polling'],
             reconnection: true,
@@ -19,7 +22,7 @@ class MultiplayerManager {
         });
         
         this.socket.on('connect', () => {
-            console.log('Sunucuya bağlandı:', socketUrl);
+            console.log('✅ Sunucuya bağlandı:', socketUrl);
             this.connected = true;
         });
 
@@ -86,11 +89,13 @@ class MultiplayerManager {
     }
 
     createRoom(playerName) {
+        console.log('Oda oluşturuluyor:', playerName);
         this.playerName = playerName;
         this.socket.emit('createRoom', playerName);
     }
 
     joinRoom(roomId, playerName) {
+        console.log('Odaya katılınıyor:', roomId, playerName);
         this.playerName = playerName;
         this.roomId = roomId;
         this.socket.emit('joinRoom', { roomId, playerName });
@@ -245,9 +250,11 @@ class MultiplayerManager {
 }
 
 // Global multiplayer manager
+console.log('Multiplayer sistemi yükleniyor...');
 const multiplayerManager = new MultiplayerManager();
 
 // Sayfa yüklendiğinde bağlan
 window.addEventListener('DOMContentLoaded', () => {
+    console.log('Sayfa yüklendi, Socket.io bağlanıyor...');
     multiplayerManager.connect();
 });
